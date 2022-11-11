@@ -1,7 +1,7 @@
 /*
 La clase Vigenere que:
 Atributos: frase, clave
-Metodos: getters(), setters()
+Metodos: getters(), setters(), palabra_to_matriz()
 Constructor
 */
 
@@ -27,6 +27,9 @@ public: //constructor
   void set_frase(std::string ); 
 
   void set_clave(std::string );
+
+  //otros metodos
+  void palabra_to_matriz(std::string );
 };
 
 std::string Vigenere::get_frase(){ 
@@ -43,4 +46,11 @@ void Vigenere::set_frase(std::string f){
 
 void Vigenere::set_clave(std::string clav){
   clave = clav;
+}
+
+void Vigenere::palabra_to_matriz(std::string mat){
+  std::string str = mat;
+    for(char i : str){
+        str = char palab_letras [mat.length()];
+    }
 }

@@ -1,7 +1,7 @@
 /*
 La clase Beaufort que:
 Atributos: frase, clave
-Metodos: getters(), setters()
+Metodos: getters(), setters(), palabra_to_matriz()
 Constructor
 */
 
@@ -27,6 +27,9 @@ public: //constructor
   void set_frase(std::string ); 
 
   void set_clave(std::string );
+
+  //otros metodos
+  void palabra_to_matriz(std::string );
 };
 
 std::string Beaufort::get_frase(){ 
@@ -43,4 +46,11 @@ void Beaufort::set_frase(std::string f){
 
 void Beaufort::set_clave(std::string clav){
   clave = clav;
+}
+
+void Beaufort::palabra_to_matriz(std::string mat){
+  std::string str = mat;
+    for(char i : str){
+        str = char palab_letras [mat.length()];
+    }
 }
