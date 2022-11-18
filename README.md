@@ -1,5 +1,7 @@
 # TC-1033
 
+(Estoy en proceso de migrar los documentos/textos del nuevo proyecto al Github)
+
 ## Contexto
 Desde la época del imperio Romano, han existido varios métodos de cifrar y descifrar mensajes al manipular el abecedario con patrones numéricos. Entre estos, existen tres tipos en particular en los que se basa este programa: el cifrado Caesar, utilizado por el mismo emperador, en el que se decide una llave numérica para mover las letras del mensake original en el alfabeto, reemplazandolas con la letra correspondiente, el cifrado Vigenère, que eleva la complejidad del Caesar al hacer este desplazamiento en dos columnas a través de una tabla, y el cifrado Beaufort, que es una versión invertida del Vigenère. 
 
