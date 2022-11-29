@@ -191,9 +191,9 @@ double Laborales::calcularPago(){
         total = cuota * acuerdo * 1.05;
     } else if (acuerdo / demanda < 0.50) {
         total = cuota * acuerdo * 1.02;
-    } else if (veredicto = 'p'){
+    } else if (veredicto == 'p'){
         total = cuota * acuerdo * 0.5;
-    } else if (corte = false){
+    } else if (corte == false){
         total = cuota * 0.90;
     } 
     return total;
@@ -319,11 +319,11 @@ double Lesiones::calcularPago(){
         total = cuota * acuerdo * 1.05;
     } else if (acuerdo / demanda < 0.50) {
         total = cuota * acuerdo * 1.02;
-    } else if (veredicto = 'p'){
+    } else if (veredicto == 'p'){
         total = cuota * acuerdo * 0.5;
-    } else if (corte = false){
+    } else if (corte == false){
         total = cuota * 0.90;
-    } else if (dano = 'm'){
+    } else if (dano == 'm'){
         total = cuota * acuerdo * 0.7;
     }
     return total;

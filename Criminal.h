@@ -170,13 +170,13 @@ bool Homicidio::get_involuntario(){
 //basado en el tiempo y la complejidad del caso
 double Homicidio::calcularPago(){
     double total;
-    if (grado =  1) {
+    if (grado ==  1) {
         total = tarifa * 1.05 * horas;
-    } else if (grado = 2) {
+    } else if (grado == 2) {
         total = tarifa * 1.02 * horas;
-    } else if (veredicto = 'c'){
+    } else if (veredicto == 'c'){
         total = tarifa * 0.5 * horas;
-    } else if (involuntario = true){
+    } else if (involuntario == true){
         total = tarifa * 0.90 * horas;
     } 
     return total;
@@ -279,11 +279,11 @@ double Hurto::get_valor(){
 //basado en el tiempo y la complejidad del caso
 double Hurto::calcularPago(){
     double total;
-    if (grado =  1) {
+    if (grado ==  1) {
         total = tarifa * 1.05 * horas;
-    } else if (grado = 2) {
+    } else if (grado == 2) {
         total = tarifa * 1.02 * horas;
-    } else if (veredicto = 'c'){
+    } else if (veredicto == 'c'){
         total = tarifa * 0.5 * horas;
     }
     return total;
