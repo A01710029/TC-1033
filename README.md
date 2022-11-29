@@ -19,3 +19,5 @@ Este programa opera con el sistema legal de los Estados Unidos y maneja las cifr
 
 ## Correciones
 Se cambió el tema del proyecto. Solía ser un programa para cifrar/descifrar mensajes. 
+Se corrigió la sintaxis para hacer comparaciones de valores en las funciones de calcularPago para todas las subclases (en Criminal y Civil)
+Se agregó el atributo de "involuntario" a la función agregaHomicidio (en Casos) y al menu de main()
