@@ -18,6 +18,6 @@ Este programa permite a un usuario (que se asume sería un abogado), a través d
 Este programa opera con el sistema legal de los Estados Unidos y maneja las cifras de dinero en dólares.
 
 ## Correciones
-Se cambió el tema del proyecto. Solía ser un programa para cifrar/descifrar mensajes. 
+Se cambió el tema del proyecto. Solía ser un programa para cifrar/descifrar mensajes. \n
 Se corrigió la sintaxis para hacer comparaciones de valores en las funciones de calcularPago para todas las subclases (en Criminal y Civil)
 Se agregó el atributo de "involuntario" a la función agregaHomicidio (en Casos) y al menu de main()
