@@ -46,7 +46,7 @@ class Casos {
     
     //Para crear objetos
     void agregaHomicidio(std::string nombre, char veredicto, double horas, \
-    int grado,double tarifa);
+    int grado,double tarifa, bool involuntario);
     void agregaHurto(std::string nombre, char veredicto, double horas, int grado, \
     double tarifa, double valor_robado);
     void agregaLaborales(std::string nombre, char veredicto, double acuerdo, \

@@ -47,6 +47,7 @@ int main(){
     int grad;
     double tar;
     double val;
+    bool invol;
 
     //casos civiles
     double ac;
@@ -95,7 +96,9 @@ int main(){
                 std::cin >> grad;
                 std::cout << "Tarifa por hora establecida: ";
                 std::cin >> tar;
-                casos.agregaHomicidio(nom, ver, hrs, grad, tar);
+                std::cout << "Homicidio involuntario (t/f): ";
+                std::cin >> invol;
+                casos.agregaHomicidio(nom, ver, hrs, grad, tar, invol);
                 break;
             //Opcion 6: crea un objeto Hurto
             case 6:
