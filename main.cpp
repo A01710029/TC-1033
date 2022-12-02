@@ -36,6 +36,12 @@ void menu(){
 int main(int argc, char* argv[]){
     
     Casos casos; 
+    
+    casos.ejemploHomicidio();
+    casos.ejemploHurto();
+    casos.ejemploLaborales();
+    casos.ejemploLesiones();
+
     //variables para el ciclo
     int opcion = 0;
 

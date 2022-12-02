@@ -22,6 +22,7 @@
 class Civil {
     protected:
         //Variables de instancia
+        int id;
         std::string nombre;
         char veredicto;
         double acuerdo;
@@ -35,10 +36,11 @@ class Civil {
         Civil();
 
         //Con parametros
-        Civil(std::string nom, char ver, double ac, double dem, int cuo, bool cor);
+        Civil(int id, std::string nom, char ver, double ac, double dem, int cuo, bool cor);
         
         //Métodos del objeto
         //Getters
+        int getId()const;
         std::string get_nombre()const;
         char get_veredicto()const;
         double get_acuerdo()const;
@@ -51,8 +53,13 @@ class Civil {
 };
 
 //Constructores
-//Default
+/*
+* Constructor por default
+* @param
+* @return objeto Civil
+*/
 Civil::Civil(){
+    id = 0;
     nombre = ""; 
     veredicto = 'g'; 
     acuerdo = 0.0; 
@@ -61,8 +68,14 @@ Civil::Civil(){
     corte = false;
 }
 
-//Con parametros
-Civil::Civil(std::string nom, char ver, double ac, double dem, int cuo, bool cor){
+/*
+* Constructor con parametros
+* @param int n: id, string nom: nombre, char ver: veredicto, double ac: acuerdo, 
+* double dem: demanda, int cuo: cuota, bool cor: corte 
+* @return objeto Civil
+*/
+Civil::Civil(int n, std::string nom, char ver, double ac, double dem, int cuo, bool cor){
+    id = n;
     nombre = nom; 
     veredicto = ver; 
     acuerdo = ac; 
@@ -71,37 +84,66 @@ Civil::Civil(std::string nom, char ver, double ac, double dem, int cuo, bool cor
 }
 
 //Getters
-//Getter para nombre
+/* getter id
+* @param
+* @return int id
+*/
+int Civil::getId()const{
+    return id;
+}
+
+/* getter nombre
+* @param
+* @return string nombre
+*/
 std::string Civil::get_nombre()const{
     return nombre;
 }
 
-//Getter para veredicto
+/* getter veredicto
+* @param
+* @return char veredicto
+*/
 char Civil::get_veredicto()const{
     return veredicto;
 } 
 
-//Getter para acuerdo
+/* getter acuerdo
+* @param
+* @return double acuerdo
+*/
 double Civil::get_acuerdo()const{
     return acuerdo;
 }
 
-//Getter para demanda
+/* getter demanda
+* @param
+* @return double demanda
+*/
 double Civil::get_demanda()const{
     return demanda;
 }
 
-//Getter para cuota
+/* getter cuota
+* @param
+* @return int cuota
+*/
 int Civil::get_cuota()const{
     return cuota;
 }
 
-//Getter para corte
+/* getter corte
+* @param
+* @return bool corte
+*/
 bool Civil::get_corte()const{
     return corte;
 }
 
-//toString con datos de casos civiles
+/* Almacena los valores de las variables en una cadena de texto
+* @param
+* @return string con datos del caso
+*/
 std::string Civil::toString()const{
     std::stringstream aux;
     aux << "Defendio a " << nombre << " en una demanda por " << demanda << \
@@ -122,11 +164,12 @@ class Laborales: public Civil{
         Laborales();
         
         //Con parametros
-        Laborales(std::string nom, char ver, double ac, double dem, int cuo, \
+        Laborales(int id, std::string nom, char ver, double ac, double dem, int cuo, \
         bool cor, std::string deman);
 
         //Metodos del objeto
         //Getters
+        int getId()const;
         std::string get_nombre()const;
         char get_veredicto()const;
         double get_acuerdo()const;
@@ -141,9 +184,13 @@ class Laborales: public Civil{
         std::string toString();
 };
 
-//Constructores del objeto
-//Default
+/*
+* Constructor por default
+* @param
+* @return objeto Laborales
+*/
 Laborales::Laborales(){
+    id = 0;
     nombre = ""; 
     veredicto = 'g'; 
     acuerdo = 0.0; 
@@ -153,9 +200,15 @@ Laborales::Laborales(){
     demandado = "";
 }
     
-//Con parametros
-Laborales::Laborales(std::string nom, char ver, double ac, double dem, int cuo, \
+/*
+* Constructor con parametros
+* @param int n: id, string nom: nombre, char ver: veredicto, double ac: acuerdo, 
+* double dem: demanda, int cuo: cuota, bool cor: corte, string deman: demandado
+* @return objeto Laborales
+*/
+Laborales::Laborales(int n, std::string nom, char ver, double ac, double dem, int cuo, \
     bool cor, std::string deman){
+        id = n;
         nombre = nom; 
         veredicto = ver; 
         acuerdo = ac; 
@@ -166,44 +219,76 @@ Laborales::Laborales(std::string nom, char ver, double ac, double dem, int cuo, 
 }
 
 //Getters
-//Getter para nombre
+/* getter id
+* @param
+* @return int id
+*/
+int Laborales::getId()const{
+    return id;
+}
+
+/* getter nombre
+* @param
+* @return string nombre
+*/
 std::string Laborales::get_nombre()const{
     return nombre;
 }
 
-//Getter para veredicto
+/* getter veredicto
+* @param
+* @return char veredicto
+*/
 char Laborales::get_veredicto()const{
     return veredicto;
 } 
 
-//Getter para acuerdo
+/* getter acuerdo
+* @param
+* @return double acuerdo
+*/
 double Laborales::get_acuerdo()const{
     return acuerdo;
 }
 
-//Getter para demanda
+/* getter demanda
+* @param
+* @return double demanda
+*/
 double Laborales::get_demanda()const{
     return demanda;
 }
 
-//Getter para cuota
+/* getter cuota
+* @param
+* @return int cuota
+*/
 int Laborales::get_cuota()const{
     return cuota;
 }
 
-//Getter para corte
+/* getter corte
+* @param
+* @return bool corte
+*/
 bool Laborales::get_corte()const{
     return corte;
 }
 
-//Getter para demandado
+/* getter demandado
+* @param
+* @return string demandado
+*/
 std::string Laborales::get_demandado()const{
     return demandado;
 }
 
-//Metodo que calcula el pago del cliente
-//basado en la cuota, lo ganado para el cliente
-//y si el caso fue a corte
+/* Metodo que calcula el pago del cliente
+* basado en la cuota, lo ganado para el cliente
+* y si el caso fue a corte
+* @param 
+* @return double total
+*/
 double Laborales::calcularPago(){
     double total;
     if (veredicto == 'p'){
@@ -216,16 +301,22 @@ double Laborales::calcularPago(){
     return total;
 }
 
-//Metodo que calcula la diferencia entre
-//lo que pidio el cliente y lo que se gano
-//al final del caso
+/* Metodo que calcula la diferencia entre
+* lo que pidio el cliente y lo que se gano
+* al final del caso
+* @param
+* @return double ganancia
+*/
 double Laborales::calcularGana_Cliente(){
     double ganancia;
     ganancia = acuerdo - demanda;
     return ganancia;
 }
 
-//toString con datos de casos de homicidio
+/* Almacena los valores de las variables en una cadena de texto
+* @param
+* @return string con datos del caso Laborales
+*/
 std::string Laborales::toString(){
     std::stringstream aux;
     aux << "Defendio a " << nombre << " en una demanda contra " << demandado << \
@@ -247,11 +338,12 @@ class Lesiones: public Civil{
         Lesiones();
         
         //Con parametros
-        Lesiones(std::string nom, char ver, double ac, double dem, int cuo, \
+        Lesiones(int id, std::string nom, char ver, double ac, double dem, int cuo, \
         bool cor, char dan);
 
         //Metodos del objeto
         //Getters
+        int getId()const;
         std::string get_nombre()const;
         char get_veredicto()const;
         double get_acuerdo()const;
@@ -266,9 +358,13 @@ class Lesiones: public Civil{
         std::string toString();
 };
 
- //Constructores del objeto
-//Default
+/*
+* Constructor por default
+* @param
+* @return objeto Lesiones
+*/
 Lesiones::Lesiones(){
+    id = 0;
     nombre = ""; 
     veredicto = 'i'; 
     acuerdo = 0.0; 
@@ -278,9 +374,15 @@ Lesiones::Lesiones(){
     dano = 'f';
 }
     
-//Con parametros
-Lesiones::Lesiones(std::string nom, char ver, double ac, double dem, int cuo, \
+/*
+* Constructor con parametros
+* @param int n: id, string nom: nombre, char ver: veredicto, double ac: acuerdo, 
+* double dem: demanda, int cuo: cuota, bool cor: corte, char dan: daño
+* @return objeto Lesiones
+*/
+Lesiones::Lesiones(int n, std::string nom, char ver, double ac, double dem, int cuo, \
     bool cor, char dan){
+        id = n;
         nombre = nom;
         veredicto = ver;
         acuerdo = ac; 
@@ -291,45 +393,77 @@ Lesiones::Lesiones(std::string nom, char ver, double ac, double dem, int cuo, \
 }
 
 //Getters
-//Getter para nombre
+/* getter id
+* @param
+* @return int id
+*/
+int Lesiones::getId()const{
+    return id;
+}
+
+/* getter nombre
+* @param
+* @return string nombre
+*/
 std::string Lesiones::get_nombre()const{
     return nombre;
 }
 
-//Getter para veredicto
+/* getter veredicto
+* @param
+* @return char veredicto
+*/
 char Lesiones::get_veredicto()const{
     return veredicto;
 } 
 
-//Getter para acuerdo
+/* getter acuerdo
+* @param
+* @return double acuerdo
+*/
 double Lesiones::get_acuerdo()const{
     return acuerdo;
 }
 
-//Getter para demanda
+/* getter demanda
+* @param
+* @return double demanda
+*/
 double Lesiones::get_demanda()const{
     return demanda;
 }
 
-//Getter para cuota
+/* getter cuota
+* @param
+* @return int cuota
+*/
 int Lesiones::get_cuota()const{
     return cuota;
 }
 
-//Getter para corte
+/* getter cuota
+* @param
+* @return int cuota
+*/
 bool Lesiones::get_corte()const{
     return corte;
 }
 
-//Getter para dano
+/* getter daño
+* @param
+* @return char daño
+*/
 char Lesiones::get_dano()const{
     return dano;
 }
 
-//Metodo que calcula el pago del cliente
-//basado en la cuota, lo ganado para el cliente,
-//que tipo de daño sufrio el cliente
-//y si el caso fue a corte
+/* Metodo que calcula el pago del cliente
+* basado en la cuota, lo ganado para el cliente,
+* que tipo de daño sufrio el cliente
+* y si el caso fue a corte
+* @param
+* @return double total
+*/
 double Lesiones::calcularPago(){
     double total;
     if (veredicto == 'p'){
@@ -342,16 +476,22 @@ double Lesiones::calcularPago(){
     return total;
 }
 
-//Metodo que calcula la diferencia entre
-//lo que pidio el cliente y lo que se gano
-//al final del caso
+/* Metodo que calcula la diferencia entre
+* lo que pidio el cliente y lo que se gano
+* al final del caso
+* @param
+* @return double ganancia
+*/
 double Lesiones::calcularGana_Cliente(){
     double ganancia;
     ganancia = acuerdo - demanda;
     return ganancia;
 }
 
-//toString con datos de casos de hurto
+/* Almacena los valores de las variables en una cadena de texto
+* @param
+* @return string con datos del caso Lesiones
+*/
 std::string Lesiones::toString(){
     std::stringstream aux;
     aux << "Defendio a " << nombre << " en una demanda por daños de tipo " << dano << \
