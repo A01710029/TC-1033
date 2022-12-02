@@ -1,4 +1,4 @@
-/*
+  /*
 * Proyecto Archivo de Casos
 * Paulina Almada Martínez
 * A01710029
@@ -39,10 +39,10 @@ class Casos {
     //Metodos de la clase
     
     //Para imprimir objetos
-    void muestraHomicidio();
-    void muestraHurto();
-    void muestraLaborales();
-    void muestraLesiones();
+    void imprimeHomicidio();
+    void imprimeHurto();
+    void imprimeLaborales();
+    void imprimeLesiones();
     
     //Para crear objetos
     void agregaHomicidio(std::string nombre, char veredicto, double horas, \
@@ -54,5 +54,64 @@ class Casos {
     void agregaLesiones(std::string nombre, char veredicto, double acuerdo, \
     double demanda, int cuota, bool corte, char dano);
 };
+
+Casos::Casos(){
+    cuenta_hom = 0;
+    cuenta_hur = 0;
+    cuenta_lab = 0;
+    cuenta_les = 0;
+}
+
+void Casos::imprimeHomicidio(){
+    for(int i = 0; i <= cuenta_hom; i++){
+        std::cout << hom[i].toString();
+    }
+}
+
+void Casos::imprimeHurto(){
+    for(int i = 0; i <= cuenta_hur; i++){
+        std::cout << hur[i].toString();
+    }
+}
+
+void Casos::imprimeLaborales(){
+    for(int i = 0; i <= cuenta_lab; i++){
+        std::cout << lab[i].toString();
+    }
+}
+
+void Casos::imprimeLesiones(){
+    for(int i = 0; i <= cuenta_les; i++){
+        std::cout << les[i].toString();
+    }
+}
+
+void Casos::agregaHomicidio(std::string nom, char ver, double hr, int grad, \
+    double tar, bool invol){
+        cuenta_hom = cuenta_hom + 1;
+        Homicidio aux(nom, ver, hr, grad, tar, invol);
+        hom[cuenta_hom] = aux;
+}
+
+void Casos::agregaHurto(std::string nom, char ver, double hr, int grad, \
+    double tar, double val){
+        cuenta_hur = cuenta_hur + 1;
+        Hurto aux(nom, ver, hr, grad, tar, val);
+        hur[cuenta_hur] = aux;
+}
+
+void Casos::agregaLaborales(std::string nom, char ver, double ac, double dem, int cuo, \
+    bool cor, std::string deman){
+        cuenta_lab = cuenta_lab + 1;
+        Laborales aux(nom, ver, ac, dem, cuo, cor, deman);
+        lab[cuenta_lab] = aux;
+}
+
+void Casos::agregaLesiones(std::string nom, char ver, double ac, double dem, int cuo, \
+    bool cor, char dan){
+        cuenta_les = cuenta_les + 1;
+        Lesiones aux(nom, ver, ac, dem, cuo, cor, dan);
+        les[cuenta_les] = aux;
+}
 
 #endif // CASOS_H_

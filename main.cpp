@@ -33,8 +33,9 @@ void menu(){
     std::cout << "9. Salir\n";
 }
 
-int main(){
-    Casos casos; //crear objeto Casos
+int main(int argc, char* argv[]){
+    
+    Casos casos; 
     //variables para el ciclo
     int opcion = 0;
 
@@ -70,23 +71,23 @@ int main(){
         switch(opcion){
             //Opcion 1: imprime casos tipo homicidio
             case 1:
-                casos.muestraHomicidio();
-                break;
+                casos.imprimeHomicidio();
+            break;
             //Opcion 2: imprime casos tipo hurto
             case 2: 
-                casos.muestraHurto();
-                break;
+                casos.imprimeHurto();
+            break;
             //Opcion 3: imprime casos tipo laborales
             case 3: 
-                casos.muestraLaborales();
-                break;
+                casos.imprimeLaborales();
+            break;
             //Opcion 4: imprime casos tipo lesiones
             case 4:
-                casos.muestraLesiones();
-                break;
+                casos.imprimeLesiones();
+            break;
             //Opcion 5: crea un objeto Homicidio
             case 5:
-                std::cout << "Nombre del cliente: ";
+                std::cout << "Nombre (solo apellido) del cliente: ";
                 std::cin >> nom;
                 std::cout << "Veredicto del caso (i/c): ";
                 std::cin >> ver;
@@ -99,7 +100,7 @@ int main(){
                 std::cout << "Homicidio involuntario (t/f): ";
                 std::cin >> invol;
                 casos.agregaHomicidio(nom, ver, hrs, grad, tar, invol);
-                break;
+            break;
             //Opcion 6: crea un objeto Hurto
             case 6:
                 std::cout << "Nombre del cliente: ";
@@ -115,7 +116,7 @@ int main(){
                 std::cout << "Valor robado: ";
                 std::cin >> val;
                 casos.agregaHurto(nom, ver, hrs, grad, tar, val);
-                break;
+            break;
             //Opcion 7: crea un objeto Laborales
             case 7:
                 std::cout << "Nombre del cliente: ";
@@ -133,7 +134,7 @@ int main(){
                 std::cout << "Demandando a: ";
                 std::cin >> deman;
                 casos.agregaLaborales(nom, ver, ac, dem, cuo, cor, deman);
-                break;
+            break;
             //Opcion 8: crea un objeto Lesiones
             case 8:
                 std::cout << "Nombre del cliente: ";
@@ -151,7 +152,7 @@ int main(){
                 std::cout << "Tipo de daño (f/m): ";
                 std::cin >> dan;
                 casos.agregaLesiones(nom, ver, ac, dem, cuo, cor, dan);
-                break;
+            break;
         }
     }
 }

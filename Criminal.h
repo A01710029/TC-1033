@@ -21,62 +21,80 @@
 //Clase Criminal
 class Criminal {
     protected:
-    //Variables de instancia
-    std::string nombre;
-    char veredicto;
-    double horas;
-    int grado;
-    double tarifa;
+        //Variables de instancia
+        std::string nombre;
+        char veredicto;
+        double horas;
+        int grado;
+        double tarifa;
 
     public:
-    //Constructores del objeto
-    //Default
-    Criminal():nombre(""), veredicto('i'), horas(0.0), grado(0), tarifa(0.0) {};
+        //Constructores del objeto
+        //Default
+        Criminal();
 
-    //Con parametros
-    Criminal(std::string nom, char ver, double hr, int grad, double tar):
-                nombre(nom), veredicto(ver), horas (hr), grado(grad), tarifa(tar) {};
-    
-    //Métodos del objeto
-    //Getters
-    std::string get_nombre();
-    char get_veredicto();
-    double get_horas();
-    int get_grado();
-    double get_tarifa();
+        //Con parametros
+        Criminal(std::string nom, char ver, double hr, int grad, double tar);
+        
+        //Métodos del objeto
+        //Getters
+        std::string get_nombre() const;
+        char get_veredicto() const;
+        double get_horas() const;
+        int get_grado() const;
+        double get_tarifa() const;
 
-    //Otras funciones
-    std::string toString();
+        //Otras funciones
+        std::string toString() const;
 };
+
+//Constructores
+//Default
+Criminal::Criminal(){
+    nombre = ""; 
+    veredicto = 'i';
+    horas = 0.0;
+    grado = 0; 
+    tarifa = 0.0;
+}
+
+//Con parametros
+Criminal::Criminal(std::string nom, char ver, double hr, int grad, double tar){
+    nombre = nom; 
+    veredicto = ver; 
+    horas = hr; 
+    grado = grad; 
+    tarifa = tar;
+}
 
 //Getters
 //Getter para nombre
-std::string Criminal::get_nombre(){
+std::string Criminal::get_nombre()const{
     return nombre;
 }
 
 //Getter para veredicto
-char Criminal::get_veredicto(){
+char Criminal::get_veredicto()const{
     return veredicto;
 } 
 
 //Getter para horas
-double Criminal::get_horas(){
+double Criminal::get_horas()const{
     return horas;
 }
 
 //Getter para grado
-int Criminal::get_grado(){
+int Criminal::get_grado()const{
     return grado;
 }
 
 //Getter para tarifa
-double Criminal::get_tarifa(){
+double Criminal::get_tarifa()const{
     return tarifa;
 }
 
 //toString con datos de casos criminales
-std::string Criminal::toString(){
+std::string Criminal::toString()const{
     std::stringstream aux;
     aux << "Defendio a " << nombre << " contra un cargo en " << grado << \
      " grado con un veredicto de " << veredicto << " dedicando " << horas << \
@@ -101,12 +119,12 @@ class Homicidio: public Criminal{
 
     //Metodos del objeto
     //Getters
-    std::string get_nombre();
-    char get_veredicto();
-    double get_horas();
-    int get_grado();
-    double get_tarifa();
-    bool get_involuntario();
+    std::string get_nombre()const;
+    char get_veredicto()const;
+    double get_horas()const;
+    int get_grado()const;
+    double get_tarifa()const;
+    bool get_involuntario()const;
 
     //Otras funciones
     double calcularPago();
@@ -137,32 +155,32 @@ Homicidio::Homicidio(std::string nom, char ver, double hr, int grad, \
 
 //Getters
 //Getter para nombre
-std::string Homicidio::get_nombre(){
+std::string Homicidio::get_nombre()const{
     return nombre;
 }
 
 //Getter para veredicto
-char Homicidio::get_veredicto(){
+char Homicidio::get_veredicto()const{
     return veredicto;
 } 
 
 //Getter para horas
-double Homicidio::get_horas(){
+double Homicidio::get_horas()const{
     return horas;
 }
 
 //Getter para grado
-int Homicidio::get_grado(){
+int Homicidio::get_grado()const{
     return grado;
 }
 
 //Getter para tarifa
-double Homicidio::get_tarifa(){
+double Homicidio::get_tarifa()const{
     return tarifa;
 }
 
 //Getter para involuntario
-bool Homicidio::get_involuntario(){
+bool Homicidio::get_involuntario()const{
     return involuntario;
 }
 
@@ -174,10 +192,8 @@ double Homicidio::calcularPago(){
         total = tarifa * 1.05 * horas;
     } else if (grado == 2) {
         total = tarifa * 1.02 * horas;
-    } else if (veredicto == 'c'){
+    } else if (veredicto == 'c' || involuntario == true){
         total = tarifa * 0.5 * horas;
-    } else if (involuntario == true){
-        total = tarifa * 0.90 * horas;
     } 
     return total;
 }
@@ -195,31 +211,31 @@ std::string Homicidio::toString(){
 //Objeto Hurto (hereda de Criminal)
 class Hurto: public Criminal{
     private:
-    //Variables de instancia
-    double valor_robado;
+        //Variables de instancia
+        double valor_robado;
 
     public:
-    //Constructores del objeto
-    //Default
-    Hurto();
-    
-    //Con parametros
-    Hurto(std::string nom, char ver, double hr, int grad, \
-    double tar, double val);
+        //Constructores del objeto
+        //Default
+        Hurto();
+        
+        //Con parametros
+        Hurto(std::string nom, char ver, double hr, int grad, \
+        double tar, double val);
 
-    //Metodos del objeto
-    //Getters
-    std::string get_nombre();
-    char get_veredicto();
-    double get_horas();
-    int get_grado();
-    double get_tarifa();
-    double get_valor();
+        //Metodos del objeto
+        //Getters
+        std::string get_nombre()const;
+        char get_veredicto()const;
+        double get_horas()const;
+        int get_grado()const;
+        double get_tarifa()const;
+        double get_valor()const;
 
-    //Otras funciones
-    double calcularPago();
-    std::string calcularTipo();
-    std::string toString();
+        //Otras funciones
+        double calcularPago();
+        std::string calcularTipo();
+        std::string toString();
 };
 
 //Constructores
@@ -246,32 +262,32 @@ Hurto::Hurto(std::string nom, char ver, double hr, int grad, \
 
 //Getters
 //Getter para nombre
-std::string Hurto::get_nombre(){
+std::string Hurto::get_nombre()const{
     return nombre;
 }
 
 //Getter para veredicto
-char Hurto::get_veredicto(){
+char Hurto::get_veredicto()const{
     return veredicto;
 } 
 
 //Getter para horas
-double Hurto::get_horas(){
+double Hurto::get_horas()const{
     return horas;
 }
 
 //Getter para grado
-int Hurto::get_grado(){
+int Hurto::get_grado()const{
     return grado;
 }
 
 //Getter para tarifa
-double Hurto::get_tarifa(){
+double Hurto::get_tarifa()const{
     return tarifa;
 }
 
 //Getter para valor robado
-double Hurto::get_valor(){
+double Hurto::get_valor()const{
     return valor_robado;
 }
 

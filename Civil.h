@@ -21,69 +21,88 @@
 //Clase Civil
 class Civil {
     protected:
-    //Variables de instancia
-    std::string nombre;
-    char veredicto;
-    double acuerdo;
-    double demanda;
-    int cuota;
-    bool corte;
+        //Variables de instancia
+        std::string nombre;
+        char veredicto;
+        double acuerdo;
+        double demanda;
+        int cuota;
+        bool corte;
 
     public:
-    //Constructores del objeto
-    //Default
-    Civil():nombre(""), veredicto('g'), acuerdo(0.0), demanda(0.0), cuota(0), corte(false) {};
+        //Constructores del objeto
+        //Default
+        Civil();
 
-    //Con parametros
-    Civil(std::string nom, char ver, double ac, double dem, int cuo, bool cor):
-                nombre(nom), veredicto(ver), acuerdo (ac), demanda(dem), cuota(cuo), corte(cor) {};
-    
-    //Métodos del objeto
-    //Getters
-    std::string get_nombre();
-    char get_veredicto();
-    double get_acuerdo();
-    double get_demanda();
-    int get_cuota();
-    bool get_corte();
+        //Con parametros
+        Civil(std::string nom, char ver, double ac, double dem, int cuo, bool cor);
+        
+        //Métodos del objeto
+        //Getters
+        std::string get_nombre()const;
+        char get_veredicto()const;
+        double get_acuerdo()const;
+        double get_demanda()const;
+        int get_cuota()const;
+        bool get_corte()const;
 
-    //Otras funciones
-    std::string toString();
+        //Otras funciones
+        std::string toString()const;
 };
+
+//Constructores
+//Default
+Civil::Civil(){
+    nombre = ""; 
+    veredicto = 'g'; 
+    acuerdo = 0.0; 
+    demanda = 0.0; 
+    cuota = 0;
+    corte = false;
+}
+
+//Con parametros
+Civil::Civil(std::string nom, char ver, double ac, double dem, int cuo, bool cor){
+    nombre = nom; 
+    veredicto = ver; 
+    acuerdo = ac; 
+    demanda = dem; 
+    cuota = cuo;
+}
 
 //Getters
 //Getter para nombre
-std::string Civil::get_nombre(){
+std::string Civil::get_nombre()const{
     return nombre;
 }
 
 //Getter para veredicto
-char Civil::get_veredicto(){
+char Civil::get_veredicto()const{
     return veredicto;
 } 
 
 //Getter para acuerdo
-double Civil::get_acuerdo(){
+double Civil::get_acuerdo()const{
     return acuerdo;
 }
 
 //Getter para demanda
-double Civil::get_demanda(){
+double Civil::get_demanda()const{
     return demanda;
 }
 
 //Getter para cuota
-int Civil::get_cuota(){
+int Civil::get_cuota()const{
     return cuota;
 }
 
 //Getter para corte
-bool Civil::get_corte(){
+bool Civil::get_corte()const{
     return corte;
 }
 
 //toString con datos de casos civiles
-std::string Civil::toString(){
+std::string Civil::toString()const{
     std::stringstream aux;
     aux << "Defendio a " << nombre << " en una demanda por " << demanda << \
      " con un veredicto de " << veredicto << " consiguiendo un acuerdo de " << acuerdo \
@@ -94,32 +113,32 @@ std::string Civil::toString(){
 //Objeto Laborales (hereda de Civil)
 class Laborales: public Civil{
     private:
-    //Variables de instancia del objeto
-    std::string demandado;
+        //Variables de instancia del objeto
+        std::string demandado;
 
     public:
-    //Constructores del objeto
-    //Default
-    Laborales();
-    
-    //Con parametros
-    Laborales(std::string nom, char ver, double ac, double dem, int cuo, \
-    bool cor, std::string deman);
+        //Constructores del objeto
+        //Default
+        Laborales();
+        
+        //Con parametros
+        Laborales(std::string nom, char ver, double ac, double dem, int cuo, \
+        bool cor, std::string deman);
 
-    //Metodos del objeto
-    //Getters
-    std::string get_nombre();
-    char get_veredicto();
-    double get_acuerdo();
-    double get_demanda();
-    int get_cuota();
-    bool get_corte();
-    std::string get_demandado();
+        //Metodos del objeto
+        //Getters
+        std::string get_nombre()const;
+        char get_veredicto()const;
+        double get_acuerdo()const;
+        double get_demanda()const;
+        int get_cuota()const;
+        bool get_corte()const;
+        std::string get_demandado()const;
 
-    //Otras funciones
-    double calcularPago();
-    double calcularGana_Cliente();
-    std::string toString();
+        //Otras funciones
+        double calcularPago();
+        double calcularGana_Cliente();
+        std::string toString();
 };
 
 //Constructores del objeto
@@ -148,37 +167,37 @@ Laborales::Laborales(std::string nom, char ver, double ac, double dem, int cuo, 
 
 //Getters
 //Getter para nombre
-std::string Laborales::get_nombre(){
+std::string Laborales::get_nombre()const{
     return nombre;
 }
 
 //Getter para veredicto
-char Laborales::get_veredicto(){
+char Laborales::get_veredicto()const{
     return veredicto;
 } 
 
 //Getter para acuerdo
-double Laborales::get_acuerdo(){
+double Laborales::get_acuerdo()const{
     return acuerdo;
 }
 
 //Getter para demanda
-double Laborales::get_demanda(){
+double Laborales::get_demanda()const{
     return demanda;
 }
 
 //Getter para cuota
-int Laborales::get_cuota(){
+int Laborales::get_cuota()const{
     return cuota;
 }
 
 //Getter para corte
-bool Laborales::get_corte(){
+bool Laborales::get_corte()const{
     return corte;
 }
 
 //Getter para demandado
-std::string Laborales::get_demandado(){
+std::string Laborales::get_demandado()const{
     return demandado;
 }
 
@@ -187,14 +206,12 @@ std::string Laborales::get_demandado(){
 //y si el caso fue a corte
 double Laborales::calcularPago(){
     double total;
-    if (acuerdo / demanda > 0.50) {
+    if (veredicto == 'p'){
+        total = cuota * acuerdo * 0.5;
+    } else if (acuerdo / demanda > 0.50 || corte == true) {
         total = cuota * acuerdo * 1.05;
     } else if (acuerdo / demanda < 0.50) {
         total = cuota * acuerdo * 1.02;
-    } else if (veredicto == 'p'){
-        total = cuota * acuerdo * 0.5;
-    } else if (corte == false){
-        total = cuota * 0.90;
     } 
     return total;
 }
@@ -221,32 +238,32 @@ std::string Laborales::toString(){
 //Objeto Lesiones (hereda de Civil)
 class Lesiones: public Civil{
     private:
-    //Variables de instancia
-    char dano;
+        //Variables de instancia
+        char dano;
 
     public:
-    //Constructores del objeto
-    //Default
-    Lesiones();
-    
-    //Con parametros
-    Lesiones(std::string nom, char ver, double ac, double dem, int cuo, \
-    bool cor, char dan);
+        //Constructores del objeto
+        //Default
+        Lesiones();
+        
+        //Con parametros
+        Lesiones(std::string nom, char ver, double ac, double dem, int cuo, \
+        bool cor, char dan);
 
-    //Metodos del objeto
-    //Getters
-    std::string get_nombre();
-    char get_veredicto();
-    double get_acuerdo();
-    double get_demanda();
-    int get_cuota();
-    bool get_corte();
-    char get_dano();
+        //Metodos del objeto
+        //Getters
+        std::string get_nombre()const;
+        char get_veredicto()const;
+        double get_acuerdo()const;
+        double get_demanda()const;
+        int get_cuota()const;
+        bool get_corte()const;
+        char get_dano()const;
 
-    //Otras funciones
-    double calcularPago();
-    double calcularGana_Cliente();
-    std::string toString();
+        //Otras funciones
+        double calcularPago();
+        double calcularGana_Cliente();
+        std::string toString();
 };
 
  //Constructores del objeto
@@ -275,37 +292,37 @@ Lesiones::Lesiones(std::string nom, char ver, double ac, double dem, int cuo, \
 
 //Getters
 //Getter para nombre
-std::string Lesiones::get_nombre(){
+std::string Lesiones::get_nombre()const{
     return nombre;
 }
 
 //Getter para veredicto
-char Lesiones::get_veredicto(){
+char Lesiones::get_veredicto()const{
     return veredicto;
 } 
 
 //Getter para acuerdo
-double Lesiones::get_acuerdo(){
+double Lesiones::get_acuerdo()const{
     return acuerdo;
 }
 
 //Getter para demanda
-double Lesiones::get_demanda(){
+double Lesiones::get_demanda()const{
     return demanda;
 }
 
 //Getter para cuota
-int Lesiones::get_cuota(){
+int Lesiones::get_cuota()const{
     return cuota;
 }
 
 //Getter para corte
-bool Lesiones::get_corte(){
+bool Lesiones::get_corte()const{
     return corte;
 }
 
 //Getter para dano
-char Lesiones::get_dano(){
+char Lesiones::get_dano()const{
     return dano;
 }
 
@@ -315,16 +332,12 @@ char Lesiones::get_dano(){
 //y si el caso fue a corte
 double Lesiones::calcularPago(){
     double total;
-    if (acuerdo / demanda > 0.50) {
-        total = cuota * acuerdo * 1.05;
-    } else if (acuerdo / demanda < 0.50) {
-        total = cuota * acuerdo * 1.02;
-    } else if (veredicto == 'p'){
+    if (veredicto == 'p'){
         total = cuota * acuerdo * 0.5;
-    } else if (corte == false){
-        total = cuota * 0.90;
-    } else if (dano == 'm'){
-        total = cuota * acuerdo * 0.7;
+    } else if (acuerdo / demanda > 0.50 || corte == true) {
+        total = cuota * acuerdo * 1.05;
+    } else if (acuerdo / demanda < 0.50 || dano == 'm') {
+        total = cuota * acuerdo * 1.02;
     }
     return total;
 }
